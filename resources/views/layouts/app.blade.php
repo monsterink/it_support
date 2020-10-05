@@ -9,11 +9,9 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-warning">
         <a class="navbar-brand" href="/">It-Support</a>
 
-        <div class="row justify-content-right">
-        <div class="row">
-        <a href="{{url('/')}}" class="btn btn-secondary  btn-lg active" role="button" aria-pressed="true">Log out</a>
-        </div>
-        </div>
+        
+        <a href="{{url('/')}}" class="btn btn-secondary  btn-lg active center-block" role="button">Log out</a>
+     
 
         </nav>
   

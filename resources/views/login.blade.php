@@ -9,10 +9,10 @@
 </head>
 <body>
 <div class="container-fluid">
-<div class="row">
-<div class="col-xs-1 center-block">
+<div class="d-flex align-items-center justify-content-center h-50">
+<div class="d-flex flex-column">
             <h1 class="text-center font-weight-bold text-danger">เข้าสู่ระบบ</h1>
-                <form action="{{url('/test')}}" method="get" ">
+                <form action="{{url('/test')}}" method="get">
                 <div class="form-group">
                 <label for="username">Username</label>
                 <input type="text" class="form-control" id="username">
