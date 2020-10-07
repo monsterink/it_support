@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,6 +16,16 @@ Route::get('/', function () {
     return view('login');
 });
 
-Route::get('/test', function () {//ชื่อ route
-    return view('child');
+Route::get('/home', function () {//ชื่อ route
+    return view('homepage');
 });
+
+Route::get('/report', function () {//ชื่อ route
+    return view('report');
+});
+
+Route::get('/form', function () {//ชื่อ route
+    return view('form');
+});
+//Route::post('/form','apitestController@index');
+Route::post('/form', 'App\Http\Controllers\apiitsupportController@store');

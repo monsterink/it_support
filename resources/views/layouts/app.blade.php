@@ -6,14 +6,27 @@
     </head>
     <body>
         @section('sidebar')
-        <nav class="navbar navbar-expand-lg navbar-light bg-warning">
-        <a class="navbar-brand" href="/">It-Support</a>
+        <div class="container-fluid navbar-expand-lg navbar-light bg-warning">
+            <div class="row">
+                <div class="col">
+                
+                <ul class="nav justify-content-start">
+                <li class="nav-item">
+                    <a class="navbar-brand" href="/">It-Support</a>
+                </li>
+                </ul>
+                </div>
 
+                <div class="col">
+                <ul class="nav justify-content-end">
+                <li class="nav-item">
+                    <a href="{{url('/')}}" class="btn btn-danger" role="button">Log out</a>
+                </li>
+                </ul>
+                </div>
+            </div>
+        </div>
         
-        <a href="{{url('/')}}" class="btn btn-secondary  btn-lg active center-block" role="button">Log out</a>
-     
-
-        </nav>
   
         @show
        
