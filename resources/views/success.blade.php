@@ -17,7 +17,7 @@ table td {
 }
 </style>
 <div class="mt-4">
-    <table class="table table-striped table-warning ">
+    <table class="table table-striped table-success ">
     <thead>
         <tr>
         <th scope="col">ลำดับที่</th>
@@ -35,7 +35,7 @@ table td {
         <td>ศันสนีย์ สุ่มกล่ำ</td>
         <td>โสภณ นิธิยานันท์</td>
         <td>2020-10-07</td>
-        <td>กำลังดำเนินการ</td>
+        <td>เสร็จสิ้น</td>
         </tr>
     </tbody>
     </table>

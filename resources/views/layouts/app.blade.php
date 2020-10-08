@@ -20,7 +20,7 @@
                 <div class="col">
                 <ul class="nav justify-content-end">
                 <li class="nav-item">
-                    <a href="{{url('/')}}" class="btn btn-danger" role="button">Log out</a>
+                    <a href="{{url('/')}}" class="btn btn-dark" role="button">Log out</a>
                 </li>
                 </ul>
                 </div>

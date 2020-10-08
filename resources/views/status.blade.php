@@ -26,6 +26,7 @@ table td {
         <th scope="col">ผู้รับผิดชอบ</th>
         <th scope="col">วันที่รับแจ้ง</th>
         <th scope="col">สถานะ</th>
+        <th scope="col"></th>
         </tr>
     </thead>
     <tbody>
@@ -36,6 +37,11 @@ table td {
         <td>โสภณ นิธิยานันท์</td>
         <td>2020-10-07</td>
         <td>กำลังดำเนินการ</td>
+        <th><div class="btn-group btn-group-toggle" data-toggle="buttons">
+        <a class="btn btn-danger" href="{{url('/edit_status')}}" role="button">แก้ไข</a>
+        <a class="btn btn-warning" href="{{url('/process_status')}}" role="button">ดำเนินงาน</a>
+        <a class="btn btn-success" href="#" role="button">เสร็จสิ้น</a>
+        </div></th>
         </tr>
     </tbody>
     </table>
@@ -44,4 +50,5 @@ table td {
     <a href="{{url('/home')}}" class="btn btn-secondary" role="button">ย้อนกลับ</a>
     </div>
     </div>
+ 
 @endsection

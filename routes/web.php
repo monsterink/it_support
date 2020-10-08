@@ -24,6 +24,30 @@ Route::get('/report', function () {//ชื่อ route
     return view('report');
 });
 
+Route::get('/status', function () {//ชื่อ route
+    return view('status');
+});
+
+Route::get('/change_status', function () {//ชื่อ route
+    return view('change_status');
+});
+
+Route::get('/edit_status', function () {//ชื่อ route
+    return view('edit');
+});
+
+Route::get('/process_status', function () {//ชื่อ route
+    return view('process');
+});
+
+Route::get('/detail', function () {//ชื่อ route
+    return view('detail');
+});
+
+Route::get('/success', function () {//ชื่อ route
+    return view('success');
+});
+
 Route::get('/form', function () {//ชื่อ route
     return view('form');
 });
