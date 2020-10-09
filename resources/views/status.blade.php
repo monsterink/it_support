@@ -37,10 +37,10 @@ table td {
         <td>โสภณ นิธิยานันท์</td>
         <td>2020-10-07</td>
         <td>กำลังดำเนินการ</td>
-        <th><div class="btn-group btn-group-toggle" data-toggle="buttons">
-        <a class="btn btn-danger" href="{{url('/edit_status')}}" role="button">แก้ไข</a>
-        <a class="btn btn-warning" href="{{url('/process_status')}}" role="button">ดำเนินงาน</a>
-        <a class="btn btn-success" href="#" role="button">เสร็จสิ้น</a>
+        <th><div class="btn-group-toggle">
+        <a class="btn btn-danger rounded-pill" href="{{url('/edit_status')}}" role="button">แก้ไข</a>
+        <a class="btn btn-warning rounded-pill" href="{{url('/process_status')}}" role="button">ดำเนินงาน</a>
+        <a class="btn btn-success rounded-pill" href="#" role="button">เสร็จสิ้น</a>
         </div></th>
         </tr>
     </tbody>
