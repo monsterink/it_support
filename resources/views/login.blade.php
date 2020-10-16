@@ -27,14 +27,20 @@
                 <h1 class="text-center font-weight-bold text-danger">เข้าสู่ระบบ</h1>
                     <form action="{{url('/home')}}" method="get">
                     <div class="form-group">
+                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M10 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm6 5c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+                        </svg>
                     <label for="username">Username</label>
-                    <input type="text" class="form-control" id="username">
+                    <input type="text" class="form-control rounded-pill border border-warning" id="username" >
                 </div>
                 <div class="form-group">
+                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-lock" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M11.5 8h-7a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1zm-7-1a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-7zm0-3a3.5 3.5 0 1 1 7 0v3h-1V4a2.5 2.5 0 0 0-5 0v3h-1V4z"/>
+                        </svg>
                     <label for="id">Password</label>
-                    <input type="password" class="form-control" id="password">
+                    <input type="password" class="form-control rounded-pill border border-warning" id="password">
                 </div>
-                <button type="submit" class="btn btn-info btn-block">Sign in</button>
+                <button type="submit" class="btn btn-info btn-block rounded-pill">Sign in</button>
                     </form>
             </div>
             </div>

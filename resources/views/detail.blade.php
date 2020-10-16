@@ -45,7 +45,7 @@ table td {
         </table>
         <div class="col-md-12 text-center">
             <button type="submit" class="btn btn-primary">บันทึก</button>
-            <a href="{{url('/status')}}" class="btn btn-secondary" role="button">ย้อนกลับ</a>
+            <a href="{{url('/home')}}" class="btn btn-secondary" role="button">ย้อนกลับ</a>
          </div>
     </div>     
 @endsection
