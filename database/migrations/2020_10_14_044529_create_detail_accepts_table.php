@@ -15,18 +15,12 @@ class CreateDetailAcceptsTable extends Migration
     {
         Schema::create('detail_accepts', function (Blueprint $table) {
             $table->id();
-            $table->integer('accept_id');
-            $table->text('description');
-            $table->date('service_date');
+            $table->integer('id');
+            $table->text('Topic');
+            $table->date('date',);
+            $table->time('time');
             $table->timestamps();
         });
-        $d_accepts = array(
-            ['accept_id' => '1', 'description' => 'test1', 'service_date' => '2020-10-16'],
-            ['accept_id' => '1', 'description' => 'test2', 'service_date' => '2020-10-16']
-        );
-        foreach($d_accepts as $d_accept){
-            detail_accept::create($d_accept);
-        }
     }
 
     /**

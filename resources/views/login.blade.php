@@ -13,7 +13,7 @@
                 
                 <ul class="nav justify-content-start">
                 <li class="nav-item">
-                    <a class="navbar-brand" href="/"><img src="image/27337.jpg" width="200" height="100"></a>
+                    <a class="navbar-brand" href="/"><img src="/storage/images/27337.jpg" width="200" height="100"></a>
                 </li>
                 </ul>
                 </div>

@@ -17,27 +17,33 @@ table td {
 }
 </style>
 <div class="mt-4">
-    <table class="table table-striped table-warning ">
+<table class="table table-striped table-warning ">
     <thead>
         <tr>
         <th scope="col">ลำดับที่</th>
         <th scope="col">เรื่อง</th>
-        <th scope="col">ผู้รับแจ้ง</th>
+        <th scope="col">ผู้แจ้ง</th>
         <th scope="col">ผู้รับผิดชอบ</th>
-        <th scope="col">วันที่รับแจ้ง</th>
+        <th scope="col">วันและเวลา</th>
         <th scope="col">สถานะ</th>
         </tr>
     </thead>
-    <tbody>
-        <tr>
-        <th scope="row">1</th>
-        <td><a role="button"  href="{{url('/detail')}}">ซ่อมคอม</a></td>
-        <td>ศันสนีย์ สุ่มกล่ำ</td>
-        <td>โสภณ นิธิยานันท์</td>
-        <td>2020-10-07</td>
-        <td>กำลังดำเนินการ</td>
-        </tr>
-    </tbody>
+    @if (count($accepts) !=0)
+      @foreach ($accepts as $accept) 
+      @if ($accept->status=="Ongoing")
+        <tbody>
+            <tr>
+            <th scope="row">{{$accept->id}}</th>
+            <td><a role="button"  href="{{url('/detail/'.$accept->id)}}">{{$accept->topic}}</a></td>
+            <td>{{$accept->informant}}</td>
+            <td>{{$accept->responsible}}</td>
+            <td>{{$accept->created_at}}</td>
+            <td>{{$accept->status}}</td>
+            </tr>
+        </tbody>
+        @endif
+      @endforeach
+    @endif
     </table>
     
     <div class="col-md-12 text-center">

@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Exports\UsersExport;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Models\accept;
+use App\Models\detail_accept;
+use App\Models\unit;
 
 class apiitsupportController extends Controller
 {
@@ -13,9 +18,25 @@ class apiitsupportController extends Controller
      */
     public function index()
     {
-        //
+        $ac=accept::all();
+        return view('status', ['accepts' => $ac]);
     }
 
+    public function unit()
+    {
+        $un=unit::all();
+        return view('form')->with(['units' => $un]);
+    }
+    public function report()
+    {
+        $ac=accept::all();
+        return view('report', ['accepts' => $ac]);
+    }
+    public function detail($id)
+    {
+        $da=detail_accept::find($id);
+        return view('detail', ['detail_accepts' => $da]);
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -34,15 +55,25 @@ class apiitsupportController extends Controller
      */
     public function store(Request $request)
     {
+    
+        $informant= $request->input('informant');
+        $position= $request->input('position');
+        $unit= $request->input('unit');
+        $location= $request->input('location');
+        $owner= $request->input('owner');
+        $topic= $request->input('topic');
+        $groupissue= $request->input('groupissue');
+        $type= $request->input('type');
+        $sapid= $request->input('sapid');
+        $result= $request->input('result');
+        $resultdetail= $request->input('resultdetail');
+        $coworker= $request->input('coworker');
+        $namecoworker= $request->input('namecoworker');
+        $status= $request->input('status');
+        $responsible= $request->input('responsible');
         
-        \Log::info($request);
-        
-        $Informant= $request->input('Informant');
-        $Notifier= $request->input('Notifier');
-        $Responsible= $request->input('Responsible');
-        $Topic= $request->input('Topic');
-        $Tel= $request->input('Tel');
-        return "Success";
+        $ac = accept::create(request()->all());//create database ผ่าน model
+                return "Create episodes success";
     }
 
     /**
@@ -87,6 +118,10 @@ class apiitsupportController extends Controller
      */
     public function destroy($id)
     {
-        //
+       //
+    }
+    public function export() 
+    {
+        return Excel::download(new UsersExport, 'users.xlsx');
     }
 }

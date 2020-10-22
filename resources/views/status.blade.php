@@ -22,28 +22,30 @@ table td {
         <tr>
         <th scope="col">ลำดับที่</th>
         <th scope="col">เรื่อง</th>
-        <th scope="col">ผู้รับแจ้ง</th>
+        <th scope="col">ผู้แจ้ง</th>
         <th scope="col">ผู้รับผิดชอบ</th>
-        <th scope="col">วันที่รับแจ้ง</th>
         <th scope="col">สถานะ</th>
         <th scope="col"></th>
         </tr>
     </thead>
+    @if (count($accepts) !=0)
+    @foreach ($accepts as $accept) 
     <tbody>
         <tr>
-        <th scope="row">1</th>
-        <td><a role="button"  href="{{url('/detail')}}">ซ่อมคอม</a></td>
-        <td>ศันสนีย์ สุ่มกล่ำ</td>
+        <th scope="row">{{$accept->id}}</th>
+        <td>{{$accept->topic}}</td>
+        <td>{{$accept->informant}}</td>
         <td>โสภณ นิธิยานันท์</td>
-        <td>2020-10-07</td>
         <td>กำลังดำเนินการ</td>
         <th><div class="form-popup" id="myForm">
         <a class="btn btn-danger rounded-pill" href="{{url('/edit_status')}}" role="button">แก้ไข</a>
-        <a class="btn btn-warning rounded-pill" href="{{url('/process_status')}}" role="button">ดำเนินงาน</a>
+        <a class="btn btn-warning rounded-pill" href="{{url('/process_status/'.$accept->id)}}" role="button">ดำเนินงาน</a>
         <a class="btn btn-success rounded-pill" href="#" role="button">เสร็จสิ้น</a>
         </div></th>
         </tr>
     </tbody>
+    @endforeach
+    @endif
     </table>
     
     <div class="col-md-12 text-center">

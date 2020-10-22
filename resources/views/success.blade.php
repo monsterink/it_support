@@ -17,6 +17,9 @@ table td {
 }
 </style>
 <div class="mt-4">
+<input class="form-control" type="text" id="search" name="search" placeholder="Search..">
+</div>
+<div class="mt-4">
     <table class="table table-striped table-success ">
     <thead>
         <tr>
@@ -28,20 +31,36 @@ table td {
         <th scope="col">สถานะ</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody id="myTable">
         <tr>
-        <th scope="row">1</th>
-        <td><a role="button"  href="{{url('/detail')}}">ซ่อมคอม</a></td>
+        <td>1</td>
+        <td><a role="button"  href="{{url('/detail')}}">ลง Window</a></td>
         <td>ศันสนีย์ สุ่มกล่ำ</td>
         <td>โสภณ นิธิยานันท์</td>
         <td>2020-10-07</td>
         <td>เสร็จสิ้น</td>
+        <th><div class="form-popup" id="myForm">
+        <a class="btn btn-danger rounded-pill" href="{{url('/')}}" role="button">Approve</a>
+        </div></th>
+        </tr>
+        <tr>
+        <td>2</td>
+        <td><a role="button"  href="{{url('/detail')}}">ลงโปรแกรม</a></td>
+        <td>อชิรญา อนุตรวัฒนกุล</td>
+        <td>โสภณ นิธิยานันท์</td>
+        <td>2020-10-20</td>
+        <td>เสร็จสิ้น</td>
+        <th><div class="form-popup" id="myForm">
+        <a class="btn btn-danger rounded-pill" href="{{url('/')}}" role="button">Approve</a>
+        </div></th>
         </tr>
     </tbody>
     </table>
     
     <div class="col-md-12 text-center">
+    <a href="{{url('/export')}}" class="btn btn-primary" role="button">ดาวน์โหลด</a>
     <a href="{{url('/home')}}" class="btn btn-secondary" role="button">ย้อนกลับ</a>
     </div>
-    </div>
+   
+    
 @endsection

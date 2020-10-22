@@ -8,12 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 class accept extends Model
 {
     use HasFactory;
-    protected $fillable = ['name_informant',
-                        'name_notifier',
-                        'name_responsible',
-                        'description',
+    protected $fillable = ['informant',
+                        'position',
+                        'unit',
+                        'location',
+                        'owner',
+                        'topic',
                         'status',
-                        'tel'];
+                        'responsible',
+                        'groupissue',
+                        'type',
+                        'sapid',
+                        'result',
+                        'resultdetail',
+                        'coworker',
+                        'namecoworker'];
     public function detail_accept()
     {
         return $this->hasMany('App\Models\detail_accept');

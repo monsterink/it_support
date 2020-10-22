@@ -14,6 +14,7 @@
 }
 </style>
 <div class="mt-4">
+{{accept_id}}
         <form action="{{url('/form')}}" method="post" class="was-validated">
         @csrf
         <div class="form-group ">
@@ -21,7 +22,7 @@
             <path fill-rule="evenodd" d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
             </svg>
             <label for="FormGroupInformant">ชื่อผู้แจ้ง</label>
-            <input type="text" class="form-control border border-warning" id="Informant" name="Informant" value="Mark" required>
+            <input type="text" class="form-control border border-warning" id="ionformant" name="informant" required>
         </div>
         
 <div class="row">
@@ -31,8 +32,9 @@
         <path fill-rule="evenodd" d="M0 12.5A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5V6.85L8.129 8.947a.5.5 0 0 1-.258 0L0 6.85v5.65z"/>
         <path fill-rule="evenodd" d="M0 4.5A1.5 1.5 0 0 1 1.5 3h13A1.5 1.5 0 0 1 16 4.5v1.384l-7.614 2.03a1.5 1.5 0 0 1-.772 0L0 5.884V4.5zm5-2A1.5 1.5 0 0 1 6.5 1h3A1.5 1.5 0 0 1 11 2.5V3h-1v-.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5V3H5v-.5z"/>
         </svg>
-            <label for="FormPosition">ตำแหน่ง</label>
+        <label for="FormPosition">ตำแหน่ง</label>
             <select class="form-control border border-warning" id="position" name="position" required>
+            <option></option>
             <option value="อาจารย์แพทย์">อาจารย์แพทย์</option>
             <option value="Resident/Fellow">Resident/Fellow</option>
             <option value="นักศึกษาแพทย์">นักศึกษาแพทย์</option>
@@ -51,15 +53,10 @@
         </svg>
             <label for="FormGroupUnit">หน่วยงาน/สังกัด</label>
             <select class="form-control border border-warning" id="unit" name="unit" required>
-            <option value="หน่วยบริหารสำนักงาน">หน่วยบริหารสำนักงาน</option>
-            <option value="หน่วยนโยบายและแผน">หน่วยนโยบายและแผน</option>
-            <option value="หน่วยบุคคลและการจัดการความรู้">หน่วยบุคคลและการจัดการความรู้</option>
-            <option value="หน่วยงบประมาณ พัสดุและการเงิน">หน่วยงบประมาณ พัสดุและการเงิน</option>
-            <option value="สาขาวิชาการบริบาลผู้ป่วยนอก">สาขาวิชาการบริบาลผู้ป่วยนอก</option>
-            <option value="สาขาวิชาความดันโลหิตสูง">สาขาวิชาความดันโลหิตสูง</option>
-            <option value="สาขาวิชามะเร็งวิทยา">สาขาวิชามะเร็งวิทยา</option>
-            <option value="สาขาวิชาต่อมไร้ท่อและเมตะบอลิสม">สาขาวิชาต่อมไร้ท่อและเมตะบอลิสม</option>
-            <option value="สาขาวิชาโรคติดเชื้อและอายุรศาสตร์เขตร้อน">สาขาวิชาโรคติดเชื้อและอายุรศาสตร์เขตร้อน</option>
+            <option></option>
+            @foreach ($units as $unit) 
+                <option value="{{$unit->id}}">{{$unit->name_unit}}</option>
+            @endforeach
             </select>
         </div>
     </div>
@@ -73,15 +70,10 @@
             </svg>
             <label for="FormLocation">สถานที่</label>
             <select class="form-control border border-warning" id="location" name="location" required>
-            <option value="หน่วยบริหารสำนักงาน">หน่วยบริหารสำนักงาน</option>
-            <option value="หน่วยนโยบายและแผน">หน่วยนโยบายและแผน</option>
-            <option value="หน่วยบุคคลและการจัดการความรู้">หน่วยบุคคลและการจัดการความรู้</option>
-            <option value="หน่วยงบประมาณ พัสดุและการเงิน">หน่วยงบประมาณ พัสดุและการเงิน</option>
-            <option value="สาขาวิชาการบริบาลผู้ป่วยนอก">สาขาวิชาการบริบาลผู้ป่วยนอก</option>
-            <option value="สาขาวิชาความดันโลหิตสูง">สาขาวิชาความดันโลหิตสูง</option>
-            <option value="สาขาวิชามะเร็งวิทยา">สาขาวิชามะเร็งวิทยา</option>
-            <option value="สาขาวิชาต่อมไร้ท่อและเมตะบอลิสม">สาขาวิชาต่อมไร้ท่อและเมตะบอลิสม</option>
-            <option value="สาขาวิชาโรคติดเชื้อและอายุรศาสตร์เขตร้อน">สาขาวิชาโรคติดเชื้อและอายุรศาสตร์เขตร้อน</option>
+            <option></option>
+            <option value="อัษฎางค์ 1">อัษฎางค์ 1</option>
+            <option value="อัษฎางค์ 10">อัษฎางค์ 10</option>
+            <option value="อัษฎางค์ 13">อัษฎางค์ 13</option>
             </select>
         </div>
     </div>
@@ -93,6 +85,7 @@
         </svg>
             <label for="FormOwner">เจ้าของ</label>
             <select class="form-control border border-warning" id="owner" name="owner" required>
+            <option></option>
             <option value="คณะฯ">คณะฯ</option>
             <option value="ภาควิชาฯ">ภาควิชาฯ</option>
             <option value="ส่วนตัว">ส่วนตัว</option>
@@ -107,7 +100,7 @@
             <path fill-rule="evenodd" d="M4.98 1a.5.5 0 0 0-.39.188L1.54 5H6a.5.5 0 0 1 .5.5 1.5 1.5 0 0 0 3 0A.5.5 0 0 1 10 5h4.46l-3.05-3.812A.5.5 0 0 0 11.02 1H4.98zM3.81.563A1.5 1.5 0 0 1 4.98 0h6.04a1.5 1.5 0 0 1 1.17.563l3.7 4.625a.5.5 0 0 1 .106.374l-.39 3.124A1.5 1.5 0 0 1 14.117 10H1.883A1.5 1.5 0 0 1 .394 8.686l-.39-3.124a.5.5 0 0 1 .106-.374L3.81.563zM.125 11.17A.5.5 0 0 1 .5 11H6a.5.5 0 0 1 .5.5 1.5 1.5 0 0 0 3 0 .5.5 0 0 1 .5-.5h5.5a.5.5 0 0 1 .496.562l-.39 3.124A1.5 1.5 0 0 1 14.117 16H1.883a1.5 1.5 0 0 1-1.489-1.314l-.39-3.124a.5.5 0 0 1 .121-.393z"/>
             </svg>
             <label for="FormGroupTopic">เรื่อง</label>
-            <textarea class="form-control border border-warning" id="Topic" rows="5" name="Topic" required>คอมพิวเตอร์เปิดไม่ติด</textarea>
+            <textarea class="form-control border border-warning" id="topic" rows="5" name="topic" required></textarea>
         </div>
         
         <div class="form-group">
@@ -172,13 +165,11 @@
             <label for="FormResult">Result</label>
             <select class="form-control border border-warning" id="result" name="result">
             <option></option>
-            <option value="Notebook">Notebook</option>
-            <option value="Printer">Printer</option>
-            <option value="Scanner">Scanner</option>
-            <option value="เครื่องคอมพิวเตอร์">เครื่องคอมพิวเตอร์</option>
-            <option value="มือถือ/ Tablet">มือถือ/ Tablet</option>
-            <option value="สื่อบันทึกข้อมูล (Flash Drive/ External HDD/ Card)">สื่อบันทึกข้อมูล (Flash Drive/ External HDD/ Card)</option>
-            <option value="อื่นๆ">อื่นๆ</option>
+            <option value="แก้ไขได้สำเร็จ">แก้ไขได้สำเร็จ</option>
+            <option value="แก้ไขไม่ได้">แก้ไขไม่ได้</option>
+            <option value="ส่งซ่อมบริษัท">ส่งซ่อมบริษัท</option>
+            <option value="ส่งต่อทีม IT">ส่งต่อทีม IT</option>
+            <option value="ส่งต่อศูนย์คอมฯ">ส่งต่อศูนย์คอมฯ</option>
             </select>
         </div>
     </div>
@@ -213,7 +204,7 @@
             <path fill-rule="evenodd" d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
             </svg>
             <label for="FormGroupUnit">ชื่อ</label>
-            <select class="form-control border border-warning" id="unit" name="unit">
+            <select class="form-control border border-warning" id="namecoworker" name="namecoworker">
             <option></option>
             <option value="นายโสภณ นิธิยานันท์">นายโสภณ นิธิยานันท์</option>
             <option value="นายพูลทรัพย์ เที่ยงรอด">นายพูลทรัพย์ เที่ยงรอด</option>

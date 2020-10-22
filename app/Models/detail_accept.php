@@ -9,8 +9,9 @@ class detail_accept extends Model
 {
     use HasFactory;
     protected $fillable = ['accept_id',
-                        'description',
-                        'service_date'];
+                        'Topic',
+                        'date',
+                        'time'];
     public function accept()
     {
         return $this->belongsTo('App\Models\accept');

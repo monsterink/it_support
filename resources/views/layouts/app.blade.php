@@ -3,7 +3,8 @@
         <meta charset="utf-8">
         <title>It-Support</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-   
+        <link rel="stylesheet" type="text/css" href="extensions/filter-control/bootstrap-table-filter-control.css">
+
     </head>
     <body>
         @section('sidebar')
@@ -13,7 +14,7 @@
                 
                 <ul class="nav justify-content-start">
                 <li class="nav-item">
-                    <a class="navbar-brand" href="/"><img src="image/27337.jpg" width="200" height="100"></a>
+                    <a class="navbar-brand" href="/"><img src="/storage/images/27337.jpg" width="200" height="100"></a>
                 </li>
                 </ul>
                 </div>

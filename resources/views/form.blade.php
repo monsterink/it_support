@@ -14,6 +14,8 @@
 }
 </style>
 <div class="mt-4">
+<!-- {{$units[0]->name_unit}}
+{{$units[1]}} -->
         <form action="{{url('/form')}}" method="post" class="was-validated">
         @csrf
         <div class="form-group ">
@@ -21,7 +23,7 @@
             <path fill-rule="evenodd" d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
             </svg>
             <label for="FormGroupInformant">ชื่อผู้แจ้ง</label>
-            <input type="text" class="form-control border border-warning" id="Informant" name="Informant" required>
+            <input type="text" class="form-control border border-warning" id="ionformant" name="informant" required>
         </div>
         
 <div class="row">
@@ -31,7 +33,7 @@
         <path fill-rule="evenodd" d="M0 12.5A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5V6.85L8.129 8.947a.5.5 0 0 1-.258 0L0 6.85v5.65z"/>
         <path fill-rule="evenodd" d="M0 4.5A1.5 1.5 0 0 1 1.5 3h13A1.5 1.5 0 0 1 16 4.5v1.384l-7.614 2.03a1.5 1.5 0 0 1-.772 0L0 5.884V4.5zm5-2A1.5 1.5 0 0 1 6.5 1h3A1.5 1.5 0 0 1 11 2.5V3h-1v-.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5V3H5v-.5z"/>
         </svg>
-            <label for="FormPosition">ตำแหน่ง</label>
+        <label for="FormPosition">ตำแหน่ง</label>
             <select class="form-control border border-warning" id="position" name="position" required>
             <option></option>
             <option value="อาจารย์แพทย์">อาจารย์แพทย์</option>
@@ -53,15 +55,9 @@
             <label for="FormGroupUnit">หน่วยงาน/สังกัด</label>
             <select class="form-control border border-warning" id="unit" name="unit" required>
             <option></option>
-            <option value="หน่วยบริหารสำนักงาน">หน่วยบริหารสำนักงาน</option>
-            <option value="หน่วยนโยบายและแผน">หน่วยนโยบายและแผน</option>
-            <option value="หน่วยบุคคลและการจัดการความรู้">หน่วยบุคคลและการจัดการความรู้</option>
-            <option value="หน่วยงบประมาณ พัสดุและการเงิน">หน่วยงบประมาณ พัสดุและการเงิน</option>
-            <option value="สาขาวิชาการบริบาลผู้ป่วยนอก">สาขาวิชาการบริบาลผู้ป่วยนอก</option>
-            <option value="สาขาวิชาความดันโลหิตสูง">สาขาวิชาความดันโลหิตสูง</option>
-            <option value="สาขาวิชามะเร็งวิทยา">สาขาวิชามะเร็งวิทยา</option>
-            <option value="สาขาวิชาต่อมไร้ท่อและเมตะบอลิสม">สาขาวิชาต่อมไร้ท่อและเมตะบอลิสม</option>
-            <option value="สาขาวิชาโรคติดเชื้อและอายุรศาสตร์เขตร้อน">สาขาวิชาโรคติดเชื้อและอายุรศาสตร์เขตร้อน</option>
+            @foreach ($units as $unit) 
+                <option value="{{$unit->id}}">{{$unit->name_unit}}</option>
+            @endforeach
             </select>
         </div>
     </div>
@@ -76,15 +72,9 @@
             <label for="FormLocation">สถานที่</label>
             <select class="form-control border border-warning" id="location" name="location" required>
             <option></option>
-            <option value="หน่วยบริหารสำนักงาน">หน่วยบริหารสำนักงาน</option>
-            <option value="หน่วยนโยบายและแผน">หน่วยนโยบายและแผน</option>
-            <option value="หน่วยบุคคลและการจัดการความรู้">หน่วยบุคคลและการจัดการความรู้</option>
-            <option value="หน่วยงบประมาณ พัสดุและการเงิน">หน่วยงบประมาณ พัสดุและการเงิน</option>
-            <option value="สาขาวิชาการบริบาลผู้ป่วยนอก">สาขาวิชาการบริบาลผู้ป่วยนอก</option>
-            <option value="สาขาวิชาความดันโลหิตสูง">สาขาวิชาความดันโลหิตสูง</option>
-            <option value="สาขาวิชามะเร็งวิทยา">สาขาวิชามะเร็งวิทยา</option>
-            <option value="สาขาวิชาต่อมไร้ท่อและเมตะบอลิสม">สาขาวิชาต่อมไร้ท่อและเมตะบอลิสม</option>
-            <option value="สาขาวิชาโรคติดเชื้อและอายุรศาสตร์เขตร้อน">สาขาวิชาโรคติดเชื้อและอายุรศาสตร์เขตร้อน</option>
+            <option value="อัษฎางค์ 1">อัษฎางค์ 1</option>
+            <option value="อัษฎางค์ 10">อัษฎางค์ 10</option>
+            <option value="อัษฎางค์ 13">อัษฎางค์ 13</option>
             </select>
         </div>
     </div>
@@ -111,7 +101,7 @@
             <path fill-rule="evenodd" d="M4.98 1a.5.5 0 0 0-.39.188L1.54 5H6a.5.5 0 0 1 .5.5 1.5 1.5 0 0 0 3 0A.5.5 0 0 1 10 5h4.46l-3.05-3.812A.5.5 0 0 0 11.02 1H4.98zM3.81.563A1.5 1.5 0 0 1 4.98 0h6.04a1.5 1.5 0 0 1 1.17.563l3.7 4.625a.5.5 0 0 1 .106.374l-.39 3.124A1.5 1.5 0 0 1 14.117 10H1.883A1.5 1.5 0 0 1 .394 8.686l-.39-3.124a.5.5 0 0 1 .106-.374L3.81.563zM.125 11.17A.5.5 0 0 1 .5 11H6a.5.5 0 0 1 .5.5 1.5 1.5 0 0 0 3 0 .5.5 0 0 1 .5-.5h5.5a.5.5 0 0 1 .496.562l-.39 3.124A1.5 1.5 0 0 1 14.117 16H1.883a1.5 1.5 0 0 1-1.489-1.314l-.39-3.124a.5.5 0 0 1 .121-.393z"/>
             </svg>
             <label for="FormGroupTopic">เรื่อง</label>
-            <textarea class="form-control border border-warning" id="Topic" rows="5" name="Topic" required></textarea>
+            <textarea class="form-control border border-warning" id="topic" rows="5" name="topic" required></textarea>
         </div>
         
         <div class="form-group">
@@ -215,7 +205,7 @@
             <path fill-rule="evenodd" d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
             </svg>
             <label for="FormGroupUnit">ชื่อ</label>
-            <select class="form-control border border-warning" id="unit" name="unit">
+            <select class="form-control border border-warning" id="namecoworker" name="namecoworker">
             <option></option>
             <option value="นายโสภณ นิธิยานันท์">นายโสภณ นิธิยานันท์</option>
             <option value="นายพูลทรัพย์ เที่ยงรอด">นายพูลทรัพย์ เที่ยงรอด</option>
@@ -226,6 +216,8 @@
             </select>
         </div>
     </div>
+    <input type="hidden" id="status" name="status" value="Ongoing">
+    <input type="hidden" id="id" name="responsible" value="อชิรญา อนุตรวัฒนกุล">
 </div>
 
         <div class="col-md-12 text-center">
