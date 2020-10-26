@@ -27,15 +27,16 @@ table td {
             <th scope="col">รายละเอียด</th>
             </tr>
         </thead>
-      
+        @foreach ($detail_accepts as $key=>$detail_accept) 
         <tbody>
             <tr>
-            <th scope="row">{{$detail_accepts->id}}</th>
-            <td>{{$detail_accepts->date}}</td>
-            <td>{{$detail_accepts->time}}</td>
-            <td>{{$detail_accepts->Topic}}</td>
+            <th scope="row">{{$key+1}}</th>
+            <td>{{$detail_accept->date}}</td>
+            <td>{{$detail_accept->time}}</td>
+            <td>{{$detail_accept->Topic}}</td>
             </tr>
         </tbody>
+        @endforeach
         </table>
         <div class="col-md-12 text-center">
             <button type="submit" class="btn btn-primary">บันทึก</button>

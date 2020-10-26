@@ -13,10 +13,11 @@ table th {
   text-align: center;
 }
 table td {
-  text-align: left;
+  text-align: center;
 }
 </style>
-<!-- {{$accept_id}} -->
+ <!-- {{$detail_accepts}}  -->
+<!-- {{$accepts}} -->
 <div class="mt-4">
 <form action="{{url('/process_status')}}" method="post" class="was-validated">
         @csrf
@@ -45,7 +46,7 @@ table td {
             <button type="submit" class="btn btn-primary">บันทึก</button>
             <a href="{{url('/status')}}" class="btn btn-secondary" role="button">ย้อนกลับ</a>
          </div>
-         <input type="hidden" id="id" name="accept_id" value="{{$accept_id}}">
+         <input type="hidden" id="id" name="accept_id" value="{{$accepts->id}}">
         </form>
 
         <table class="table">
@@ -53,26 +54,20 @@ table td {
             <tr>
             <th scope="col">ลำดับที่</th>
             <th scope="col">วัน/เดือน/ปี</th>
+            <th scope="col">เวลา</th>
             <th scope="col">รายละเอียด</th>
             </tr>
         </thead>
+        @foreach ($detail_accepts as $key=>$detail_accept) 
         <tbody>
             <tr>
-            <th scope="row">1</th>
-            <td>2020-10-07</td>
-            <td>Check อาการ</td>
-            </tr>
-            <tr>
-            <th scope="row">2</th>
-            <td>2020-10-08</td>
-            <td>หาอุปกรณ์</td>
-            </tr>
-            <tr>
-            <th scope="row">3</th>
-            <td>2020-10-09</td>
-            <td>เสร็จสิ้น</td>
+            <th scope="row">{{$key+1}}</th>
+            <td>{{$detail_accept->date}}</td>
+            <td>{{$detail_accept->time}}</td>
+            <td>{{$detail_accept->Topic}}</td>
             </tr>
         </tbody>
+        @endforeach
         </table>
     </div>     
 

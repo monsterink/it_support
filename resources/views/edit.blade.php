@@ -13,16 +13,16 @@
   padding: 8px;
 }
 </style>
+<!-- {{$accepts}} -->
 <div class="mt-4">
-{{accept_id}}
-        <form action="{{url('/form')}}" method="post" class="was-validated">
+        <form action="{{url('/edit_status/'.$accepts->id)}}" method="post" class="was-validated">
         @csrf
         <div class="form-group ">
             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-fill text-info" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
             </svg>
             <label for="FormGroupInformant">ชื่อผู้แจ้ง</label>
-            <input type="text" class="form-control border border-warning" id="ionformant" name="informant" required>
+            <input type="text" class="form-control border border-warning" id="ionformant" name="informant" value='{{$accepts->informant}}' required>
         </div>
         
 <div class="row">
@@ -34,7 +34,7 @@
         </svg>
         <label for="FormPosition">ตำแหน่ง</label>
             <select class="form-control border border-warning" id="position" name="position" required>
-            <option></option>
+            <option>{{$accepts->position}}</option>
             <option value="อาจารย์แพทย์">อาจารย์แพทย์</option>
             <option value="Resident/Fellow">Resident/Fellow</option>
             <option value="นักศึกษาแพทย์">นักศึกษาแพทย์</option>
@@ -53,7 +53,7 @@
         </svg>
             <label for="FormGroupUnit">หน่วยงาน/สังกัด</label>
             <select class="form-control border border-warning" id="unit" name="unit" required>
-            <option></option>
+            <option>{{$accepts->unit}}</option>
             @foreach ($units as $unit) 
                 <option value="{{$unit->id}}">{{$unit->name_unit}}</option>
             @endforeach
@@ -70,7 +70,7 @@
             </svg>
             <label for="FormLocation">สถานที่</label>
             <select class="form-control border border-warning" id="location" name="location" required>
-            <option></option>
+            <option>{{$accepts->location}}</option>
             <option value="อัษฎางค์ 1">อัษฎางค์ 1</option>
             <option value="อัษฎางค์ 10">อัษฎางค์ 10</option>
             <option value="อัษฎางค์ 13">อัษฎางค์ 13</option>
@@ -85,7 +85,7 @@
         </svg>
             <label for="FormOwner">เจ้าของ</label>
             <select class="form-control border border-warning" id="owner" name="owner" required>
-            <option></option>
+            <option>{{$accepts->owner}}</option>
             <option value="คณะฯ">คณะฯ</option>
             <option value="ภาควิชาฯ">ภาควิชาฯ</option>
             <option value="ส่วนตัว">ส่วนตัว</option>
@@ -100,7 +100,7 @@
             <path fill-rule="evenodd" d="M4.98 1a.5.5 0 0 0-.39.188L1.54 5H6a.5.5 0 0 1 .5.5 1.5 1.5 0 0 0 3 0A.5.5 0 0 1 10 5h4.46l-3.05-3.812A.5.5 0 0 0 11.02 1H4.98zM3.81.563A1.5 1.5 0 0 1 4.98 0h6.04a1.5 1.5 0 0 1 1.17.563l3.7 4.625a.5.5 0 0 1 .106.374l-.39 3.124A1.5 1.5 0 0 1 14.117 10H1.883A1.5 1.5 0 0 1 .394 8.686l-.39-3.124a.5.5 0 0 1 .106-.374L3.81.563zM.125 11.17A.5.5 0 0 1 .5 11H6a.5.5 0 0 1 .5.5 1.5 1.5 0 0 0 3 0 .5.5 0 0 1 .5-.5h5.5a.5.5 0 0 1 .496.562l-.39 3.124A1.5 1.5 0 0 1 14.117 16H1.883a1.5 1.5 0 0 1-1.489-1.314l-.39-3.124a.5.5 0 0 1 .121-.393z"/>
             </svg>
             <label for="FormGroupTopic">เรื่อง</label>
-            <textarea class="form-control border border-warning" id="topic" rows="5" name="topic" required></textarea>
+            <textarea class="form-control border border-warning" id="topic" rows="5" name="topic" required>{{$accepts->topic}}</textarea>
         </div>
         
         <div class="form-group">
@@ -111,7 +111,7 @@
             </svg>
             <label for="FormGroupIssue">กลุ่มปัญหา</label>
             <select class="form-control border border-warning" id="groupissue" name="groupissue" norequired>
-            <option></option>
+            <option>{{$accepts->groupissue}}</option>
             <option value="ด้าน Hardware">ด้าน Hardware</option>
             <option value="ด้าน Software">ด้าน Software</option>
             <option value="ด้าน Network">ด้าน Network</option>
@@ -133,7 +133,7 @@
             </svg>
             <label for="FormType">ชนิดของอุปกรณ์</label>
             <select class="form-control border border-warning" id="type" name="type">
-            <option></option>
+            <option>{{$accepts->type}}</option>
             <option value="Notebook">Notebook</option>
             <option value="Printer">Printer</option>
             <option value="Scanner">Scanner</option>
@@ -151,7 +151,7 @@
             <path fill-rule="evenodd" d="M15.898 2.223a3.003 3.003 0 0 1-3.679 3.674L5.878 12.15a3 3 0 1 1-2.027-2.027l6.252-6.341A3 3 0 0 1 13.778.1l-2.142 2.142L12 4l1.757.364 2.141-2.141zm-13.37 9.019L3.001 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026z"/>
             </svg>
             <label for="FormSapid">SAPID</label>
-            <input type="text" class="form-control border border-warning" id="sapid" name="sapid">
+            <input type="text" class="form-control border border-warning" id="sapid" name="sapid" value='{{$accepts->sapid}}'>
         </div>
     </div>
 </div>
@@ -164,7 +164,7 @@
             </svg>
             <label for="FormResult">Result</label>
             <select class="form-control border border-warning" id="result" name="result">
-            <option></option>
+            <option>{{$accepts->result}}</option>
             <option value="แก้ไขได้สำเร็จ">แก้ไขได้สำเร็จ</option>
             <option value="แก้ไขไม่ได้">แก้ไขไม่ได้</option>
             <option value="ส่งซ่อมบริษัท">ส่งซ่อมบริษัท</option>
@@ -179,7 +179,7 @@
             <path fill-rule="evenodd" d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm10.03 4.97a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
             </svg>
             <label for="FormResultDetail">Result Detail</label>
-            <input type="text" class="form-control border border-warning" id="resultdetail" name="resultdetail">
+            <input type="text" class="form-control border border-warning" id="resultdetail" name="resultdetail" value='{{$accepts->resultdetail}}'>
         </div>
     </div>
 </div>
@@ -192,7 +192,7 @@
             </svg>
             <label for="FormCoWorker">ส่งงานต่อ/ร่วมงาน</label>
             <select class="form-control border border-warning" id="coworker" name="coworker">
-            <option></option>
+            <option>{{$accepts->coworker}}</option>
             <option value="ส่งงานต่อ">ส่งงานต่อ</option>
             <option value="ร่วมงาน">ร่วมงาน</option>
             </select>
@@ -205,7 +205,7 @@
             </svg>
             <label for="FormGroupUnit">ชื่อ</label>
             <select class="form-control border border-warning" id="namecoworker" name="namecoworker">
-            <option></option>
+            <option>{{$accepts->namecoworker}}</option>
             <option value="นายโสภณ นิธิยานันท์">นายโสภณ นิธิยานันท์</option>
             <option value="นายพูลทรัพย์ เที่ยงรอด">นายพูลทรัพย์ เที่ยงรอด</option>
             <option value="นางปนัดดา เที่ยงรอด">นางปนัดดา เที่ยงรอด</option>
@@ -215,11 +215,13 @@
             </select>
         </div>
     </div>
+    <input type="hidden" id="status" name="status" value="Ongoing">
+    <input type="hidden" id="id" name="responsible" value="อชิรญา อนุตรวัฒนกุล">
 </div>
 
         <div class="col-md-12 text-center">
             <button type="submit" class="btn btn-primary">บันทึก</button>
-            <a href="{{url('/home')}}" class="btn btn-secondary" role="button">ย้อนกลับ</a>
+            <a href="{{url('/status')}}" class="btn btn-secondary" role="button">ย้อนกลับ</a>
          </div>
         </form>
         </div>

@@ -13,7 +13,7 @@ table th {
   text-align: center;
 }
 table td {
-  text-align: left;
+  text-align: center;
 }
 </style>
 <div class="mt-4">
@@ -22,39 +22,35 @@ table td {
 <div class="mt-4">
     <table class="table table-striped table-success ">
     <thead>
-        <tr>
-        <th scope="col">ลำดับที่</th>
+    <tr>
+        <th scope="col">CaseId</th>
         <th scope="col">เรื่อง</th>
-        <th scope="col">ผู้รับแจ้ง</th>
+        <th scope="col">ผู้แจ้ง</th>
         <th scope="col">ผู้รับผิดชอบ</th>
-        <th scope="col">วันที่รับแจ้ง</th>
+        <th scope="col">วันและเวลา</th>
         <th scope="col">สถานะ</th>
+        <th scope="col"></th>
         </tr>
     </thead>
-    <tbody id="myTable">
-        <tr>
-        <td>1</td>
-        <td><a role="button"  href="{{url('/detail')}}">ลง Window</a></td>
-        <td>ศันสนีย์ สุ่มกล่ำ</td>
-        <td>โสภณ นิธิยานันท์</td>
-        <td>2020-10-07</td>
-        <td>เสร็จสิ้น</td>
-        <th><div class="form-popup" id="myForm">
-        <a class="btn btn-danger rounded-pill" href="{{url('/')}}" role="button">Approve</a>
-        </div></th>
-        </tr>
-        <tr>
-        <td>2</td>
-        <td><a role="button"  href="{{url('/detail')}}">ลงโปรแกรม</a></td>
-        <td>อชิรญา อนุตรวัฒนกุล</td>
-        <td>โสภณ นิธิยานันท์</td>
-        <td>2020-10-20</td>
-        <td>เสร็จสิ้น</td>
-        <th><div class="form-popup" id="myForm">
+    @if (count($accepts) !=0)
+      @foreach ($accepts as $accept) 
+      @if ($accept->status=="Complete")
+    <tbody>
+    <tr>
+        <td></td>
+        <td><a role="button"  href="{{url('/detail/'.$accept->id)}}">{{$accept->topic}}</a></td>
+        <td>{{$accept->informant}}</td>
+        <td>{{$accept->responsible}}</td>
+        <td>{{$accept->created_at}}</td>
+        <td>{{$accept->status}}</td>
+        <th>
         <a class="btn btn-danger rounded-pill" href="{{url('/')}}" role="button">Approve</a>
         </div></th>
         </tr>
     </tbody>
+      @endif
+      @endforeach
+    @endif
     </table>
     
     <div class="col-md-12 text-center">

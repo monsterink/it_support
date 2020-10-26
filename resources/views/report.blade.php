@@ -20,7 +20,7 @@ table td {
 <table class="table table-striped table-warning ">
     <thead>
         <tr>
-        <th scope="col">ลำดับที่</th>
+        <th scope="col">CaseId</th>
         <th scope="col">เรื่อง</th>
         <th scope="col">ผู้แจ้ง</th>
         <th scope="col">ผู้รับผิดชอบ</th>
@@ -33,7 +33,7 @@ table td {
       @if ($accept->status=="Ongoing")
         <tbody>
             <tr>
-            <th scope="row">{{$accept->id}}</th>
+            <th scope="row"></th>
             <td><a role="button"  href="{{url('/detail/'.$accept->id)}}">{{$accept->topic}}</a></td>
             <td>{{$accept->informant}}</td>
             <td>{{$accept->responsible}}</td>
