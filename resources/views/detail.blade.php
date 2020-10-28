@@ -19,8 +19,8 @@ table td {
 <!-- {{$detail_accepts}} -->
 <!-- {{$accepts}} -->
 <div class="mt-4">
-        <table class="table table-info">
-        <thead class="bg-info">
+        <table class="table table-primary table-striped">
+        <thead>
             <tr>
             <th scope="col" width='300px'>CaseId</th>
             </tr>
@@ -32,8 +32,8 @@ table td {
         </tbody>
         </table>
 
-        <table class="table table-info">
-        <thead class="bg-info">
+        <table class="table table-primary table-striped">
+        <thead>
             <tr>
             <th scope="col" width='300px'>ผู้แจ้ง</th>
             <th scope="col" width='300px'>ตำแหน่ง</th>
@@ -49,8 +49,8 @@ table td {
         </tbody>
         </table>
 
-        <table class="table table-info">
-        <thead class="bg-info"
+        <table class="table table-primary table-striped">
+        <thead>
             <tr>
             <th scope="col" width='300px'>ผู้รับแจ้ง</th>
             <th scope="col" width='300px'>สถานที่</th>
@@ -66,8 +66,8 @@ table td {
         </tbody>
         </table>
 
-        <table class="table table-info">
-        <thead class="bg-info"
+        <table class="table table-primary table-striped">
+        <thead>
             <tr>
             <th scope="col" width='300px'>เรื่อง</th>
             </tr>
@@ -79,8 +79,8 @@ table td {
         </tbody>
         </table>
 
-        <table class="table table-info">
-        <thead class="bg-info">
+        <table class="table table-primary table-striped">
+        <thead>
             <tr>
             <th scope="col" width='300px'>กลุ่มปัญหา</th>
             <th scope="col" width='300px'>ชนิดของปัญหา</th>
@@ -96,8 +96,8 @@ table td {
         </tbody>
         </table>
 
-        <table class="table table-info">
-        <thead class="bg-info">
+        <table class="table table-primary table-striped">
+        <thead>
             <tr>
             <th scope="col" width='500px'>Result</th>
             <th scope="col" width='500px'>ResultDetail</th>
@@ -111,8 +111,8 @@ table td {
         </tbody>
         </table>
 
-        <table class="table table-info">
-        <thead class="bg-info">
+        <table class="table table-primary table-striped">
+        <thead>
             <tr>
             <th scope="col" width='500px'>ส่งงานต่อ/ร่วมงาน</th>
             <th scope="col" width='500px'>ชื่อผู้ร่วมงาน</th>
@@ -126,8 +126,8 @@ table td {
         </tbody>
         </table>
 
-        <table class="table table-success">
-        <thead class="bg-success">
+        <table class="table table-success table-striped">
+        <thead>
             <tr>
             <th scope="col">ลำดับที่</th>
             <th scope="col">วัน/เดือน/ปี</th>
@@ -135,20 +135,20 @@ table td {
             <th scope="col">รายละเอียด</th>
             </tr>
         </thead>
-        @foreach ($detail_accepts as $key=>$detail_accept) 
         <tbody>
             <tr>
-            <th scope="row">{{$key+1}}</th>
+            @foreach ($detail_accepts as $key=>$detail_accept) 
+            <th>{{$key+1}}</th>
             <td>{{$detail_accept->date}}</td>
             <td>{{$detail_accept->time}}</td>
             <td>{{$detail_accept->Topic}}</td>
-            </tr>
+           @endforeach  
+           </tr>
         </tbody>
-        @endforeach
         </table>
 
-        <table class="table table-Danger">
-        <thead class="bg-Danger">
+        <table class="table table-danger table-striped">
+        <thead>
             <tr>
             <th scope="col" width='500px'>Approve</th>
             </tr>

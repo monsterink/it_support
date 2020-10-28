@@ -220,8 +220,7 @@
     <input type="hidden" id="status" name="status" value="Ongoing">
     <input type="hidden" id="id" name="responsible" value="อชิรญา อนุตรวัฒนกุล"> 
 </div>
-
-        <div class="col-md-12 text-center">
+        <div class="col-md-12 text-center mt-4">
             <button type="submit" class="btn btn-primary">บันทึก</button>
             <a href="{{url('/home')}}" class="btn btn-secondary" role="button">ย้อนกลับ</a>
          </div>

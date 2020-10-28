@@ -13,7 +13,7 @@ table th {
   text-align: center;
 }
 table td {
-  text-align: left;
+  text-align: center;
 }
 </style>
 <!-- {{$accepts}} -->
@@ -26,6 +26,7 @@ table td {
         <th scope="col">ผู้รับผิดชอบ</th>
         <th scope="col">วันและเวลา</th>
         <th scope="col">สถานะ</th>
+        <th scope="col"></th>
         </tr>
     </thead>
     @if (count($accepts) !=0 )

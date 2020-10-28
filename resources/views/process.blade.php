@@ -49,7 +49,7 @@ table td {
             <label for="FormGroupTopic">รายละเอียด</label>
             <textarea class="form-control border border-warning" id="Topic" rows="5" name="Topic" required></textarea>
         </div>
-        <div class="col-md-12 text-center">
+        <div class="col-md-12 text-center mt-4">
             <button type="submit" class="btn btn-primary">บันทึก</button>
             <a href="{{url('/status')}}" class="btn btn-secondary" role="button">ย้อนกลับ</a>
          </div>
