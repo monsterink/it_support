@@ -15,14 +15,15 @@ class CreateAcceptsTable extends Migration
     {
         Schema::create('accepts', function (Blueprint $table) {
             $table->id();
+            $table->char('caseId',20);
             $table->char('informant',100);
             $table->char('position',100);
             $table->char('unit',100);
             $table->char('location',100);
             $table->char('owner',100);
             $table->text('topic');
-            $table->char('status',50)->nullable();
-            $table->char('responsible',100)->nullable();
+            $table->char('status',50);
+            $table->char('responsible',100);
             $table->char('groupissue',100)->nullable();
             $table->char('type',100)->nullable();
             $table->char('sapid',100)->nullable();
@@ -30,6 +31,9 @@ class CreateAcceptsTable extends Migration
             $table->char('resultdetail',100)->nullable();
             $table->char('coworker',100)->nullable();
             $table->char('namecoworker',100)->nullable();
+            $table->char('month',2)->nullable();
+            $table->char('year',4)->nullable();
+            $table->char('approve',10)->nullable();
             $table->timestamps();
         });
 

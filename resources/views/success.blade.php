@@ -24,7 +24,6 @@ table td {
     <thead>
     <tr>
         <th scope="col">CaseId</th>
-        <th scope="col">เรื่อง</th>
         <th scope="col">ผู้แจ้ง</th>
         <th scope="col">ผู้รับผิดชอบ</th>
         <th scope="col">วันและเวลา</th>
@@ -34,17 +33,16 @@ table td {
     </thead>
     @if (count($accepts) !=0)
       @foreach ($accepts as $accept) 
-      @if ($accept->status=="Complete")
+      @if ($accept->status=="Complete" && $accept->approve=="")
     <tbody>
     <tr>
-        <td></td>
-        <td><a role="button"  href="{{url('/detail/'.$accept->id)}}">{{$accept->topic}}</a></td>
+        <td><a role="button"  href="{{url('/detail/'.$accept->id)}}">{{$accept->caseId}}</a></td>
         <td>{{$accept->informant}}</td>
         <td>{{$accept->responsible}}</td>
         <td>{{$accept->created_at}}</td>
         <td>{{$accept->status}}</td>
         <th>
-        <a class="btn btn-danger rounded-pill" href="{{url('/')}}" role="button">Approve</a>
+        <a class="btn btn-danger rounded-pill" href="{{url('/success/'.$accept->id)}}" role="button">Approve</a>
         </div></th>
         </tr>
     </tbody>

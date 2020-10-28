@@ -15,7 +15,7 @@ class CreateDetailAcceptsTable extends Migration
     {
         Schema::create('detail_accepts', function (Blueprint $table) {
             $table->id();
-            $table->integer('id');
+            $table->integer('accept_id');
             $table->text('Topic');
             $table->date('date',);
             $table->time('time');

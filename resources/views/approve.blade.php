@@ -13,47 +13,44 @@ table th {
   text-align: center;
 }
 table td {
-  text-align: left;
+  text-align: center;
 }
 </style>
-<!-- {{$accepts}} -->
 <div class="mt-4">
-    <table class="table table-striped table-warning ">
+<input class="form-control" type="text" id="search" name="search" placeholder="Search..">
+</div>
+<div class="mt-4">
+    <table class="table table-striped table-primary ">
     <thead>
-        <tr>
+    <tr>
         <th scope="col">CaseId</th>
         <th scope="col">ผู้แจ้ง</th>
         <th scope="col">ผู้รับผิดชอบ</th>
         <th scope="col">วันและเวลา</th>
-        <th scope="col">สถานะ</th>
+        <th scope="col">Approve</th>
         </tr>
     </thead>
-    @if (count($accepts) !=0 )
-      @foreach ($accepts as $accept)
-        @if ($accept->status == 'Ongoing')
+    @if (count($accepts) !=0)
+      @foreach ($accepts as $accept) 
+      @if ($accept->approve == "Check")
     <tbody>
-        <tr>
+    <tr>
         <td><a role="button"  href="{{url('/detail/'.$accept->id)}}">{{$accept->caseId}}</a></td>
         <td>{{$accept->informant}}</td>
         <td>{{$accept->responsible}}</td>
         <td>{{$accept->created_at}}</td>
-        <td>{{$accept->status}}</td>
-        <th><div class="form-popup" id="myForm">
-        <a class="btn btn-danger rounded-pill" href="{{url('/edit_status/'.$accept->id)}}" role="button">แก้ไข</a>
-        <a class="btn btn-warning rounded-pill" href="{{url('/process_status/'.$accept->id)}}" role="button">ดำเนินงาน</a>
-        <a class="btn btn-success rounded-pill" href="{{url('/status/'.$accept->id)}}" role="button">เสร็จสิ้น</a>
-        <!-- onClick="this.form.action='accept_topic.php'; submit()" -->
-        </div></th>
-        </tr>
+        <td>{{$accept->approve}}</td>
+    </tr>
     </tbody>
-        @endif
+      @endif
       @endforeach
     @endif
     </table>
     
     <div class="col-md-12 text-center">
+    <a href="{{url('/export')}}" class="btn btn-primary" role="button">ดาวน์โหลด</a>
     <a href="{{url('/home')}}" class="btn btn-secondary" role="button">ย้อนกลับ</a>
     </div>
-    </div>
- 
+   
+    
 @endsection

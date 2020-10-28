@@ -35,8 +35,9 @@ class apiitsupportController extends Controller
     public function detail($id)
     {
         $ac=accept::find($id);
+        $un=unit::all();
         $da=detail_accept::where('accept_id',$id)->get();
-        return view('detail', ['detail_accepts' => $da,'accepts' => $ac]);
+        return view('detail', ['detail_accepts' => $da,'accepts' => $ac,'units' => $un]);
     }
     public function process($id)
     {
@@ -48,6 +49,11 @@ class apiitsupportController extends Controller
     {
         $ac=accept::all();
         return view('success', ['accepts' => $ac]);
+    }
+    public function approve()
+    {
+        $ac=accept::all();
+        return view('approve', ['accepts' => $ac]);
     }
     /**
      * Show the form for creating a new resource.
@@ -67,24 +73,42 @@ class apiitsupportController extends Controller
      */
     public function store(Request $request)
     {
-    
-        $informant= $request->input('informant');
-        $position= $request->input('position');
-        $unit= $request->input('unit');
-        $location= $request->input('location');
-        $owner= $request->input('owner');
-        $topic= $request->input('topic');
-        $groupissue= $request->input('groupissue');
-        $type= $request->input('type');
-        $sapid= $request->input('sapid');
-        $result= $request->input('result');
-        $resultdetail= $request->input('resultdetail');
-        $coworker= $request->input('coworker');
-        $namecoworker= $request->input('namecoworker');
-        $status= $request->input('status');
-        $responsible= $request->input('responsible');
+        $year=date("Y");
+        $month=date("m");
+        $find = accept::select('month','year')->orderByRaw('id DESC')->first();
+        $count = accept::where('month','=',$month)->where('year','=',$year)->orderByRaw('id DESC')->count();
         
-        $ac = accept::create(request()->all());//create database ผ่าน model
+        $i=1;
+        // \Log::info($count);
+        if($count==0){
+            $caseid = $year.$month."-0".$i;
+        }else{
+            if($count<9){
+            $caseid = $year.$month."-0".($count+1);
+            }else{
+            $caseid = $year.$month."-".($count+1);
+            }
+        }
+        $accept = new accept;
+        $accept->caseId= $caseid;
+        $accept->informant= $request->input('informant');
+        $accept->position= $request->input('position');
+        $accept->unit= $request->input('unit');
+        $accept->location= $request->input('location');
+        $accept->owner= $request->input('owner');
+        $accept->topic= $request->input('topic');
+        $accept->groupissue= $request->input('groupissue');
+        $accept->type= $request->input('type');
+        $accept->sapid= $request->input('sapid');
+        $accept->result= $request->input('result');
+        $accept->resultdetail= $request->input('resultdetail');
+        $accept->coworker= $request->input('coworker');
+        $accept->namecoworker= $request->input('namecoworker');
+        $accept->status= $request->input('status');
+        $accept->responsible= $request->input('responsible');
+        $accept->month= $month;
+        $accept->year= $year;
+        $accept->save();
                 return "Create episodes success";
     }
 
@@ -154,11 +178,20 @@ class apiitsupportController extends Controller
     }
     public function edit_status(Request $request,$id)
     {
-        \Log::info($id);
+        // \Log::info($id);
         $status= $request->input('status');
         
         $ac = accept::where('id',$id)
           ->update(['status' => 'Complete']);
+          return "update success";
+    }
+    public function update_approve(Request $request,$id)
+    {
+        // \Log::info($id);
+        $status= $request->input('status');
+        
+        $ac = accept::where('id',$id)
+          ->update(['approve' => 'Check']);
           return "update success";
     }
     /**

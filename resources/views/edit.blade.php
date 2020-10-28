@@ -17,6 +17,13 @@
 <div class="mt-4">
         <form action="{{url('/edit_status/'.$accepts->id)}}" method="post" class="was-validated">
         @csrf
+        <div class="form-group">
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-bookmark-star-fill " fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" d="M4 0a2 2 0 0 0-2 2v13.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4zm4.16 4.1a.178.178 0 0 0-.32 0l-.634 1.285a.178.178 0 0 1-.134.098l-1.42.206a.178.178 0 0 0-.098.303L6.58 6.993c.042.041.061.1.051.158L6.39 8.565a.178.178 0 0 0 .258.187l1.27-.668a.178.178 0 0 1 .165 0l1.27.668a.178.178 0 0 0 .257-.187L9.368 7.15a.178.178 0 0 1 .05-.158l1.028-1.001a.178.178 0 0 0-.098-.303l-1.42-.206a.178.178 0 0 1-.134-.098L8.16 4.1z"/>
+        </svg>
+            <label for="disabledTextInput">CaseId</label>
+            <input type="text" id="disabledTextInput" class="form-control" value='{{$accepts->caseId}}' readonly>
+        </div>
         <div class="form-group ">
             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-fill text-info" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
@@ -53,9 +60,9 @@
         </svg>
             <label for="FormGroupUnit">หน่วยงาน/สังกัด</label>
             <select class="form-control border border-warning" id="unit" name="unit" required>
-            <option>{{$accepts->unit}}</option>
+            <!-- <option>{{$accepts->unit}}</option> -->
             @foreach ($units as $unit) 
-                <option value="{{$unit->id}}">{{$unit->name_unit}}</option>
+                <option value="{{$unit->id}}"{{ old('id') == $accepts->unit ? "selected" :""}}>{{$unit->name_unit}}</option>
             @endforeach
             </select>
         </div>
@@ -96,8 +103,9 @@
 </div>
 
         <div class="form-group">
-            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-inboxes-fill text-info" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" d="M4.98 1a.5.5 0 0 0-.39.188L1.54 5H6a.5.5 0 0 1 .5.5 1.5 1.5 0 0 0 3 0A.5.5 0 0 1 10 5h4.46l-3.05-3.812A.5.5 0 0 0 11.02 1H4.98zM3.81.563A1.5 1.5 0 0 1 4.98 0h6.04a1.5 1.5 0 0 1 1.17.563l3.7 4.625a.5.5 0 0 1 .106.374l-.39 3.124A1.5 1.5 0 0 1 14.117 10H1.883A1.5 1.5 0 0 1 .394 8.686l-.39-3.124a.5.5 0 0 1 .106-.374L3.81.563zM.125 11.17A.5.5 0 0 1 .5 11H6a.5.5 0 0 1 .5.5 1.5 1.5 0 0 0 3 0 .5.5 0 0 1 .5-.5h5.5a.5.5 0 0 1 .496.562l-.39 3.124A1.5 1.5 0 0 1 14.117 16H1.883a1.5 1.5 0 0 1-1.489-1.314l-.39-3.124a.5.5 0 0 1 .121-.393z"/>
+            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-textarea-t text-info" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M1.5 2.5A1.5 1.5 0 0 1 3 1h10a1.5 1.5 0 0 1 1.5 1.5v3.563a2 2 0 0 1 0 3.874V13.5A1.5 1.5 0 0 1 13 15H3a1.5 1.5 0 0 1-1.5-1.5V9.937a2 2 0 0 1 0-3.874V2.5zm1 3.563a2 2 0 0 1 0 3.874V13.5a.5.5 0 0 0 .5.5h10a.5.5 0 0 0 .5-.5V9.937a2 2 0 0 1 0-3.874V2.5A.5.5 0 0 0 13 2H3a.5.5 0 0 0-.5.5v3.563zM2 7a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm12 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+            <path d="M11.434 4H4.566L4.5 5.994h.386c.21-1.252.612-1.446 2.173-1.495l.343-.011v6.343c0 .537-.116.665-1.049.748V12h3.294v-.421c-.938-.083-1.054-.21-1.054-.748V4.488l.348.01c1.56.05 1.963.244 2.173 1.496h.386L11.434 4z"/>
             </svg>
             <label for="FormGroupTopic">เรื่อง</label>
             <textarea class="form-control border border-warning" id="topic" rows="5" name="topic" required>{{$accepts->topic}}</textarea>

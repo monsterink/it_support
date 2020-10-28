@@ -38,7 +38,9 @@ Route::post('/process_status', 'App\Http\Controllers\detail_accept_api_Controlle
 Route::get('/detail/{accept_id}', 'App\Http\Controllers\apiitsupportController@detail');
 
 Route::get('/success', 'App\Http\Controllers\apiitsupportController@success');
+Route::get('/success/{accept_id}', 'App\Http\Controllers\apiitsupportController@update_approve');
 
+Route::get('/approve', 'App\Http\Controllers\apiitsupportController@approve');
 // Route::get('/form', function () {//ชื่อ route
 //     return view('form')->with(['units'=>'ink']);
 // });

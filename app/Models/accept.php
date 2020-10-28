@@ -9,6 +9,7 @@ class accept extends Model
 {
     use HasFactory;
     protected $fillable = ['informant',
+                        'caseId',
                         'position',
                         'unit',
                         'location',
@@ -22,7 +23,10 @@ class accept extends Model
                         'result',
                         'resultdetail',
                         'coworker',
-                        'namecoworker'];
+                        'namecoworker',
+                        'month',
+                        'year',
+                        'approve'];
     public function detail_accept()
     {
         return $this->hasMany('App\Models\detail_accept');

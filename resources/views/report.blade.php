@@ -13,7 +13,7 @@ table th {
   text-align: center;
 }
 table td {
-  text-align: left;
+  text-align: center;
 }
 </style>
 <div class="mt-4">
@@ -21,7 +21,6 @@ table td {
     <thead>
         <tr>
         <th scope="col">CaseId</th>
-        <th scope="col">เรื่อง</th>
         <th scope="col">ผู้แจ้ง</th>
         <th scope="col">ผู้รับผิดชอบ</th>
         <th scope="col">วันและเวลา</th>
@@ -33,8 +32,7 @@ table td {
       @if ($accept->status=="Ongoing")
         <tbody>
             <tr>
-            <th scope="row"></th>
-            <td><a role="button"  href="{{url('/detail/'.$accept->id)}}">{{$accept->topic}}</a></td>
+            <td><a role="button"  href="{{url('/detail/'.$accept->id)}}">{{$accept->caseId}}</a></td>
             <td>{{$accept->informant}}</td>
             <td>{{$accept->responsible}}</td>
             <td>{{$accept->created_at}}</td>
