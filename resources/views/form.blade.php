@@ -13,6 +13,15 @@
   padding: 8px;
 }
 </style>
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 <div class="mt-4">
 <!-- {{$units[0]->name_unit}}
 {{$units[1]}} -->

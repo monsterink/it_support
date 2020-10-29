@@ -49,3 +49,5 @@ Route::post('/form', 'App\Http\Controllers\apiitsupportController@store');
 
 Route::get('/export', 'App\Http\Controllers\apiitsupportController@export');
 
+Route::get('/download', 'App\Http\Controllers\apiitsupportController@download');
+

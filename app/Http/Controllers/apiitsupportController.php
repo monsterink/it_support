@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Illuminate\Http\Request;
 use App\Exports\AcceptExport;
 use Maatwebsite\Excel\Facades\Excel;
@@ -55,6 +55,11 @@ class apiitsupportController extends Controller
         $ac=accept::all();
         return view('approve', ['accepts' => $ac]);
     }
+    public function download()
+    {
+        $ac=accept::all();
+        return view('download', ['accepts' => $ac]);
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -73,6 +78,10 @@ class apiitsupportController extends Controller
      */
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'sapid' => 'required|max:10',
+        ]);
+        return $errors;
         $year=date("Y");
         $month=date("m");
         $find = accept::select('month','year')->orderByRaw('id DESC')->first();
